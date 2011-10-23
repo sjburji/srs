@@ -1,0 +1,33 @@
+<%= link_to 'Edit', edit_cm_path(@cm) %> | <%= link_to 'Back', cms_path %>
+
+<p id="notice"><%= notice %></p>
+<br/>
+
+<p>
+  <b>Section:</b>
+  <%= @cm.section %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @cm.active %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @cm.created_at.strftime('%d %B %Y') %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%= @cm.updated_at.strftime('%d %B %Y') %>
+</p>
+
+<br/>
+<p>
+  <b>Content:</b>
+  <br/>
+  
+  <%= text_area_tag 'cms_content', @cm.content, :disabled => true,
+    :style => 'width:300px; height:100px;' %>
+</p>

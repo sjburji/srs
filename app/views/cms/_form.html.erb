@@ -1,0 +1,36 @@
+<%= form_for(@cm) do |f| %>
+  <% if @cm.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@cm.errors.count, "error") %> prohibited this announcement from being saved:</h4>
+
+      <ul>
+      <% @cm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :section %><br />
+    <%= f.text_area :section, :style => 'width:300px; height:100px;' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>&nbsp;[ *supports HTML tags ]<br />
+    <%= f.text_area :content, :style => 'width:300px; height:100px;' %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :flag_active %><br />
+    <span class="span-3"><%= f.radio_button "active", 'Y', {:checked => true} %>  Yes</span>
+    <span class="span-3"><%= f.radio_button "active", 'N' %>  No</span>
+  </div>
+
+  <hr style="background-color: #fff;"/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

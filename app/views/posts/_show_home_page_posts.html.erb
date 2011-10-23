@@ -1,0 +1,20 @@
+<% @posts.each do |post| %>
+  <span class="post_title">
+    <%= post.title %>
+
+    <span class="post_time">
+      posted <%=  distance_of_time_in_words(Time.now, post.created_at) %> ago<br/>
+    </span>
+    <br/>
+  </span>
+
+  <span class="post_summary">
+    <i><%= post.summary %></i><br/><br/>
+  </span>
+
+  <span class="post_content">
+    <%= post.content.html_safe %>
+  </span>
+  <hr/>
+  
+<% end -%>
