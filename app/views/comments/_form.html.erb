@@ -1,7 +1,7 @@
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <h4><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h4>
 
       <ul>
       <% @comment.errors.full_messages.each do |msg| %>
@@ -10,20 +10,21 @@
       </ul>
     </div>
   <% end %>
+  
+  <div>
+    <span>
+      <%= f.text_field :content, :class => 'simple', :maxlength => '140', :style => 'width:450px;' %>
+    </span>
 
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.hidden_field :post_id %>
+    <%= f.hidden_field :user_id %>
+
+    <span class="actions">
+      <%= f.submit 'Comment', :post_id => @comment.post_id %>
+      <br/>
+      <span style="font-size:10px;">( 140 characters max )</span>
+    </span>
   </div>
-  <div class="field">
-    <%= f.label :post_id %><br />
-    <%= f.text_field :post_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+    
 <% end %>

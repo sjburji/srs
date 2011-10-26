@@ -25,11 +25,10 @@ class CommentsController < ApplicationController
   # GET /comments/new.xml
   def new
     @comment = Comment.new
+    @comment.post_id = params[:post_id].to_i
+    @comment.user_id = current_user.id
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
+    render :partial => 'form'
   end
 
   # GET /comments/1/edit
@@ -44,11 +43,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+        format.html { redirect_to(root_path) }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        format.html { render :partial => 'form' }
       end
     end
   end
@@ -79,5 +76,9 @@ class CommentsController < ApplicationController
       format.html { redirect_to(comments_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def comments_content
+    render :partial => 'comments_content', :locals => {:post_id => params[:post_id].to_i}
   end
 end

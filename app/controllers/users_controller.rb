@@ -2,22 +2,28 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    if signed_in? && author_signed_in?
+      @users = User.find(:all, :order => 'CREATED_AT DESC')
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      respond_to do |format|
+        format.html
+      end
+    else
+      redirect_to root_path
     end
   end
 
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
+    if signed_in? && current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      respond_to do |format|
+        format.html
+      end
+    else
+      redirect_to root_path
     end
   end
 
@@ -28,14 +34,17 @@ class UsersController < ApplicationController
     @title = 'SUBSCRIBE'
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
+      format.html
     end
   end
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    if signed_in? && current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /users
@@ -59,28 +68,33 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
+    if signed_in? && current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
+          format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        else
+          format.html { render :action => "edit" }
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    if signed_in? && author_signed_in?
+      @user = User.find(params[:id])
+      @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
+      respond_to do |format|
+        format.html { redirect_to(users_url) }
+      end
+    else
+      redirect_to root_path
     end
   end
 end

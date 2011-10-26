@@ -1,0 +1,12 @@
+<%= javascript_tag :defer => 'defer' do -%>
+  $(document).ready(function(){
+     $.get('/getUatContent', function(data){
+         $('#uat_content_div').html(data);
+
+         return false;
+     });
+  });
+<% end -%>
+
+<h3>USER AGREEMENT TERMS</h3>
+<p id="uat_content_div"></p>

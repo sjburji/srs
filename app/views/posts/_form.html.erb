@@ -28,6 +28,14 @@
     <%= f.text_area :content, :style => 'width:600px; height: 150px;' %>
   </div>
 
+  <div class="field">
+    <%= f.label :tab %><br />
+    <% for tab in Tab.find(:all, :conditions => "name != 'ALL'") do %>
+      <%= f.radio_button "tab_id", tab.id %><%= tab.name %>
+    <% end -%>
+  </div>
+  <br/>
+
   <div class="actions">
     <%= f.submit %>
   </div>

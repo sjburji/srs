@@ -1,0 +1,10 @@
+<% Comment.find_all_by_post_id(post_id, :order => 'CREATED_AT DESC').each do |comment| %>
+  <span style="float:left;">
+    <strong><%= comment.content %></strong>
+  </span>
+  <span style="float:right;">
+    says <%= comment.user.name %>
+    <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago
+  </span>
+  <br/>
+<% end -%>

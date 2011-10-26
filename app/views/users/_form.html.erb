@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, :maxlength => 30 %>
+  <div>
+    <span><%= f.label :name %></span><br/>
+    <%= f.text_field :name, :maxlength => 30, :style => 'width:300px;', :class => 'simple' %>
   </div>
   <br/>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email, :maxlength => 50 %>
+  <div>
+    <span><%= f.label :email %></span><br/>
+    <%= f.text_field :email, :maxlength => 50, :style => 'width:300px;', :class => 'simple' %>
   </div>
-  <br/>
+  <br/><br/>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, :maxlength => 40 %>
+  <div>
+    <span><%= f.label :password %></span><br/>
+    <%= f.password_field :password, :maxlength => 40, :style => 'width:300px;', :class => 'simple' %>
   </div>
-  <br/>
+  <br/><br/>
 
-  <div class="field">
-    <b>Confirmation</b><br/>
-    <%= f.password_field :password_confirmation, :maxlength => 40 %>
+  <div>
+    <b>Confirm Password</b><br/>
+    <%= f.password_field :password_confirmation, :maxlength => 40, :style => 'width:300px;', :class => 'simple' %>
   </div>
   <br/>
 

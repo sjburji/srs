@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @title = 'HOME'
-
-    @tabs = Tab.find(:all)
+    @title = 'HOME'    
   end
 
   def contact
@@ -11,6 +9,14 @@ class PagesController < ApplicationController
 
   def about
     @title = 'ABOUT'
+  end
+
+  def privacy_policy
+    @title = 'PRIVACY POLICY'
+  end
+
+  def uat
+    @title = 'USER AGREEMENT TERMS'
   end
 
   def dashboard

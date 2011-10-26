@@ -1,13 +1,6 @@
-2. grouping of posts
-3. current user place holder
-4. user access control
-5. image uploads for users
-6. posts widget
+2. posts widget
+3. Email
+4. FaceBook
 
-CMS
-1. footer
-2. contact
-3. about
-4. privacy policy
-5. user agreement terms
-
+a. srspal
+b. srshankapal

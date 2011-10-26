@@ -1,0 +1,32 @@
+<div style="width:30%; padding:5px; float: left;">
+  <h4>File Upload</h4>
+  <%= form_tag('/upload_file', :multipart => true) do %>
+    <p>
+      <label for="upload_file">Select File</label>
+      <%= file_field 'upload', 'datafile' %>
+    </p>
+    <%= submit_tag "Submit" %>
+  <% end -%>  
+</div>
+
+<div style="float: left; width: 65%; padding: 5px; border-left: 1px dotted #cecece;">
+  <h4>File Listing</h4>
+  <% index = 0 %>
+  <table>
+    <tr>
+      <td>Sl No.</td>
+      <td>Filename</td>
+      <td>Filepath</td>
+    </tr>
+    <% Dir.foreach("public/data/images") do |entry| %>
+      <% if entry != "." && entry != ".." %>
+        <tr>
+          <% index += 1 %>
+          <td><%= index %>.</td>
+          <td><%= entry %></td>
+          <td>http://srspal.com/public/data/images/<%= entry %></td>
+        </tr>
+      <% end -%>
+    <% end -%>
+  </table>
+</div>

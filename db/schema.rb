@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110731175801) do
+ActiveRecord::Schema.define(:version => 20111023035254) do
 
   create_table "cms", :force => true do |t|
     t.string   "section"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20110731175801) do
     t.integer  "user_id",    :precision => 38, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tab_id",     :precision => 38, :scale => 0
   end
 
   create_table "roles", :force => true do |t|

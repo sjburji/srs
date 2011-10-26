@@ -1,0 +1,12 @@
+<%= javascript_tag :defer => 'defer' do -%>
+  $(document).ready(function(){
+     $.get('/getPrivacyContent', function(data){
+         $('#privacy_content_div').html(data);
+
+         return false;
+     });
+  });
+<% end -%>
+
+<h3>PRIVACY POLICY</h3>
+<p id="privacy_content_div"></p>

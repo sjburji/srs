@@ -1,2 +1,12 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<%= javascript_tag :defer => 'defer' do -%>
+  $(document).ready(function(){
+     $.get('/getAboutContent', function(data){
+         $('#about_content_div').html(data);
+
+         return false;
+     });
+  });
+<% end -%>
+
+<h3>ABOUT</h3>
+<p id="about_content_div"></p>

@@ -1,5 +1,13 @@
+.yield_content{
+    padding:10px;
+}
+
+.footer{
+    padding-top:10px;
+}
+
 .footer_links{
-    width:200px;
+    width:150px;
     float:left;
     margin-left: 50px;
 }
@@ -81,7 +89,7 @@
 }
 
 .post_time{
-    font-size: 11px;
+    font-size: 12px;
     float: right;
     color: #000;
     font-weight: normal;
@@ -89,52 +97,64 @@
 
 .recent_posts_header{
     background-color:#175E9D;
-    font-family: verdana;
+    font-family: arial;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 12px;
     color: #fff;
     padding: 4px;
 }
 
 .recent_posts_body{
-    font-family: verdana;
-    font-size: 11px;
+    font-family: arial;
+    font-size: 12px;
     color: #000;
     padding: 4px;
 }
 
+.recent_posts_body a{
+    text-decoration: none;
+}
+
 .archive{
     background-color:#175E9D;
-    font-family: verdana;
+    font-family: arial;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 12px;
     color: #fff;
     padding: 4px;
 }
 
+.archive_posts_body{
+    font-family: arial;
+    font-size: 12px;
+    color: #000;
+    padding: 4px;
+}
+
+.archive_posts_body a{
+    text-decoration: none;
+}
+
 .masthead {  
-  height:40px;
-  background-color:#6299c5;
+  height:35px;
+  background-color:#000;
   background-repeat:no-repeat;
   color:#fff;
-  font-family:verdana;
-  font-size: 13px;
-  font-weight: bold;  
+  font-family:arial;
+  font-size: 12px;
 }
 
 .masthead a{
     text-decoration: none;
-    font-size: 11px;
+    font-size: 12px;
     color:#175E9D;
-    font-weight: bold;
     padding: 10px;
     background-color: #fff;
     margin-right: 4px;
 }
 
 .masthead a:hover{
-    color:#fff;
-    font-weight: bold;
+    color:#fff;    
     background-color:#205791;
 }
 
@@ -449,8 +469,8 @@ table.form tbody td {font-size:120%;font-weight:normal;}
   text-align: center;
   background: #175E9D;
   padding: 1px;
-  font-family: verdana;
-  font-size: 11px;
+  font-family: arial;
+  font-size: 12px;
   color: #fff;
   border: 1px outset grey;
 }

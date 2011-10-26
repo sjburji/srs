@@ -25,71 +25,110 @@
   
 </head>
   <body>
-    <div class="container">
-      <div class="span-24">
-              <div class="masthead">
-                <span style="float:left; padding: 2px;">
-                  <span style="font-family:cursive; font-weight: normal;">
-                    Being oneself ...
-                  </span>
-                  Dr. Surendra Rao Shankpal
-                </span>
+    <div>
+      <div>
+          <div class="masthead">
+            <span style="float:left; padding: 2px;">
+              <span style="font-family:cursive; font-weight: normal;">
+                Being oneself ...
+              </span>
+              Dr. Surendra Rao Shankpal
+            </span>
 
-                <span style="float: right;">
-                  <%= link_to "Home", root_path, :class => 'round' %>
-                  <%= link_to "About", about_path, :class => 'round' %>
-                  <%= link_to "Contact", contact_path, :class => 'round' %>
-                  <%= link_to "Subscribe", signup_path, :class => "round" %>
+            <span style="float: right;">
+              <%= link_to "Home", root_path, :class => 'round' %>
+              <%= link_to "About", about_path, :class => 'round' %>
+              <%= link_to "Contact", contact_path, :class => 'round' %>              
 
-                  <% if signed_in? %>
-                    <% if author_signed_in? %>
-                      <%= link_to "Dashboard", dashboard_path, :class => 'round' %>
-                    <% end -%>
-                    <%= link_to "Sign out", signout_path, :method => :delete, :class => 'round' %>
-                  <% else %>
-                    <%= link_to "Sign in", signin_path, :class => 'round'  %>
-                  <% end %>
+              <% if signed_in? %>
+                <% if author_signed_in? %>
+                  <%= link_to "Dashboard", dashboard_path, :class => 'round' %>
+                <% else %>
+                  <%= link_to "My Account", user_path(current_user), :class => 'round' %>
+                <% end -%>
+                <%= link_to "Sign out", signout_path, :method => :delete, :class => 'round' %>
+              <% else %>
+                <%= link_to "Subscribe", signup_path, :class => "round" %>
+                <%= link_to "Sign in", signin_path, :class => 'round'  %>
+              <% end %>
 
-                </span>
-              </div>
+            </span>
+          </div>
 
-              <div style="background-color:#e5ecf9;">
-                <span style="margin: 0px; float: left; padding: 4px;">
-                  <%= image_tag("president.gif", :alt => "Sample App", :size => '80x80') %>
-                  <br/>
-                </span>
+          <div>
+            <span style="margin: 0px; float: left; padding: 4px;">
+              <%= image_tag("president.gif", :alt => "Sample App", :size => '100x135') %>
+              <br/>
+            </span>
 
-                <span id="foreword_content_div" style="float:left; padding: 4px;"></span>
-                <hr/>
-              </div>
+            <div style="float:left; padding: 4px; width:65%;">
+              <span id="foreword_content_div"></span>
               
+              <span>
+                <% Tab.find(:all, :order => 'ID').each do |tab| %>
+                  <span class="home_tabs" id="home_tabs">
+                    <%= link_to tab.name, '', :class => "span-2",
+                      :tab_id => tab.id, :id => 'tab_id_' + tab.id.to_s %>
+                  </span>
+                <% end -%>
+              </span>
+            </div>
+
+            <% unless current_user.nil? %>
+              <span id="current_user_div" style="float:right; padding: 4px; font-weight: bold;">
+                Hi <%= current_user.name %>
+                <br/>
+                <%= link_to User.find_all_by_role_id(Role::SUBSCRIBER).count, users_path %> followers.
+                <br/>
+                
+              </span>
+            <% end -%>
+            <hr/>
+          </div>
       </div>      
 
-      <div class="span-24">
-        <%= yield %>
+      <div class="yield_content">
+        <%= yield %>        
       </div>
 
-      <div class="span-24">
-        <br/><br/>
+      <div class="footer">
         <hr/>
-        <div class="footer_links">
+        <div class="footer_links" style="width:15%">
+          <div align="center"><strong>Usefel Links</strong></div>
+          <hr/>
+          
           <ul>
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Contact", contact_path %></li>
-            <li><%= link_to "Subscribe", signup_path, :class => "round" %></li>
-
-            <% if signed_in? %>
-              <% if author_signed_in? %>
-              <li><%= link_to "Dashboard", dashboard_path %></li>
-              <% end -%>
-              <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-            <% else %>
-              <li><%= link_to "Sign in", signin_path  %></li>
-            <% end %>
+            <% unless signed_in? %>
+              <li><%= link_to "Subscribe", signup_path, :class => "round" %></li>
+            <% end -%>
           </ul>
         </div>
-        <div style="width:100px; float:right; margin-right: 50px;">&copy; 2011 srs.com</div>
+
+        <div class="footer_links" style="width:55%;">
+          <span id="footer_content_div"></span>
+        </div>
+
+        <div class="footer_links" style="width:15%;">
+          <div>
+            <div align="center"><strong>Usage Policy</strong></div>
+            <hr/>
+
+            <ul>
+              <li>
+                <%= link_to "Privacy Policy", privacy_path, :class => 'round' %>
+              </li>
+
+              <li>
+                <%= link_to "User Agreement", uat_path, :class => 'round' %>
+              </li>
+            </ul>
+
+            &copy; 2011 srs.com
+          </div>
+        </div>
       </div>
 
     </div>

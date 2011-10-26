@@ -1,0 +1,6 @@
+<% @archive_posts.group_by{|post| post.created_at.strftime "%B %Y" }.each do |date_str,cs| %>
+  <li>
+      <%= link_to date_str, :controller => "posts",
+      :action => "view_archive", :archive_id => date_str %> [ <%= cs.count %> ]
+  </li>
+<% end -%>

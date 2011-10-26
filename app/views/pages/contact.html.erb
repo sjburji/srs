@@ -1,2 +1,12 @@
-<h1>Pages#contact</h1>
-<p>Find me in app/views/pages/contact.html.erb</p>
+<%= javascript_tag :defer => 'defer' do -%>
+  $(document).ready(function(){
+     $.get('/getContactContent', function(data){
+         $('#contact_content_div').html(data);
+
+         return false;
+     });
+  });
+<% end -%>
+
+<h3>CONTACT</h3>
+<p id="contact_content_div"></p>
