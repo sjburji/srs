@@ -1,6 +1,5 @@
 <% @recent_posts.each do |recent_post| %>
   <li>
-    <%= link_to recent_post.title, :controller => "posts",
-      :action => "view", :id => recent_post.id %>
+    <%= link_to recent_post.title, post_path(recent_post.id) %>
   </li>
 <% end -%>

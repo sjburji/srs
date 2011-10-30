@@ -28,6 +28,10 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id].to_i
     @comment.user_id = current_user.id
 
+    unless params[:parent_id].nil?
+      @comment.parent_id = params[:parent_id].to_i
+    end
+
     render :partial => 'form'
   end
 
@@ -80,5 +84,9 @@ class CommentsController < ApplicationController
 
   def comments_content
     render :partial => 'comments_content', :locals => {:post_id => params[:post_id].to_i}
+  end
+
+  def comments_count
+    render :partial => 'comments_count', :locals => {:post_id => params[:post_id].to_i}
   end
 end

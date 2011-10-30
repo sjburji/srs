@@ -15,16 +15,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.xml
-  def show
-    if signed_in? && author_signed_in?
-      @post = Post.find(params[:id])
-      @post.content = File.read(@post.content).html_safe
-
-      respond_to do |format|
-        format.html
-      end
-    else
-      redirect_to root_path
+  def show    
+    @post = Post.find(params[:id])
+    
+    respond_to do |format|
+      format.html
     end
   end
 

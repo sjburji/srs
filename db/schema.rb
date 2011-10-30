@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023035254) do
+ActiveRecord::Schema.define(:version => 20111030110327) do
 
   create_table "cms", :force => true do |t|
     t.string   "section"
-    t.text     "content"
     t.string   "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content"
   end
 
   create_table "comments", :force => true do |t|
@@ -26,16 +26,17 @@ ActiveRecord::Schema.define(:version => 20111023035254) do
     t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id",  :precision => 38, :scale => 0
   end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.string   "summary"
-    t.text     "content"
     t.integer  "user_id",    :precision => 38, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tab_id",     :precision => 38, :scale => 0
+    t.string   "content"
   end
 
   create_table "roles", :force => true do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20111023035254) do
     t.integer  "role_id",            :precision => 38, :scale => 0
     t.string   "encrypted_password"
     t.string   "salt"
+    t.string   "image"
   end
 
 end

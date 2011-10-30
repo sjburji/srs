@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<% unless @user.image.nil? %>
+  <p>
+    <%= image_tag(@user.image, :alt => @user.name, :size => '50x50') %>
+  </p>
+<% else %>
+  <p>
+    <%= image_tag('/images/profiles/BookPhoto.JPG', :alt => @user.name, :size => '50x50') %>
+  </p>
+<% end -%>
+
 <p>
   <b>Name:</b>
   <%= @user.name %>

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   belongs_to :role
 
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :image
 
   validates :password, :presence     => true,
                        :confirmation => true,
@@ -36,8 +36,10 @@ class User < ActiveRecord::Base
   private
 
     def encrypt_password
-      self.salt = make_salt if new_record?
-      self.encrypted_password = encrypt(password)
+      if self.encrypted_password.nil?
+        self.salt = make_salt if new_record?
+        self.encrypted_password = encrypt(password)
+      end
     end
 
     def encrypt(string)
@@ -53,6 +55,8 @@ class User < ActiveRecord::Base
     end
 
     def set_defaults
-      self.role_id = Role::SUBSCRIBER
+      if self.role_id.nil?
+        self.role_id = Role::SUBSCRIBER
+      end
     end
 end

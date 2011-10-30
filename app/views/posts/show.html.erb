@@ -1,33 +1,62 @@
-<p id="notice"><%= notice %></p>
+<% if signed_in? and author_signed_in? %>
+  <p style="float:right;">
+    <%= link_to 'Edit', edit_post_path(@post) %>
+    <hr/>
+  </p>
+<% end -%>
 
-<p>
-  <span class="span-3">
-    <b>Title</b>
-  </span>
-  <%= @post.title %>
-</p>
+  <div id="comments_div" class="post">
+    <div class="post_heading">
+      <span class="post_title">
+        <%= @post.title %>
+      </span>
 
-<p>
-  <span class="span-3">
-    <b>Summary:</b>
-  </span>
-  <%= @post.summary %>
-</p>
+      <span class="post_time">
+        posted by <%= @post.user.name %>
+        on <%= @post.created_at.strftime('%B  %d %Y at %l:%M:%S %P') %>
+        <br/>
+      </span>
+      <br/>
+    </div>
+    
+    <span class="post_summary">
+      <%= @post.summary %>
+      <br/><br/>
+    </span>
 
-<p>
-  <span class="span-3">
-    <b>Content:</b>
-  </span>
-  <%= @post.content.html_safe %>
-</p>
+    <span class="post_content">
+      <%= File.read(@post.content).html_safe %>
+      <br/><br/>
+    </span>
 
-<p>
-  <span class="span-3">
-    <b>Author:</b>
-  </span>
-  <%= @post.user.name %>
-</p>
+    <div style="width:99%;">
+      <span class="comment_link">
+        <% if signed_in? %>
+          <span id="comments_link_div">
+            <%= link_to 'Comment', '', :post_id => @post.id %>
+          </span>
+        <% else %>
+            <%= link_to 'Comment', signin_path %>
+        <% end -%>
+      </span>
 
+      <% unless Comment.find_all_by_post_id(@post.id).nil? %>
+        - <strong>
+         <span id="comments_count_link"><%= render :partial => 'comments/comments_count', :locals => {:post_id => @post.id} %></span>
+         Comments</strong><br/><br/>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+        <% if signed_in? %>
+        <span>
+          <span id='<%= "comments_div_#{@post.id}" %>' style="width:99%;"></span>
+        </span>
+        <br/>
+      <% end -%>
+
+        <% if Comment.find_all_by_post_id(@post.id).count > 0 %>
+          <div id='<%= "comments_content_div_#{@post.id}" %>' style="padding: 5px; display: none;">
+            <%= render :partial => 'comments/comments_content', :locals => {:post_id => @post.id} %>
+          </div>
+        <% end -%>
+      <% end -%>      
+    </div>
+  </div>

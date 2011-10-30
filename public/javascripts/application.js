@@ -40,7 +40,7 @@ $('#comments_div form').live('submit', function(){
     var post_id = $('#comment_post_id').val();
     var comments_div = '#comments_div_' + post_id;
     var comments_content_div = '#comments_content_div_' + post_id;
-    var loading_msg = '<img src="images/ajax-loading.gif" alt="loading ... "/>';
+    var loading_msg = '<img src="/images/ajax-loading.gif" alt="loading ... "/>';
     $(comments_div).html(loading_msg);
 
     //post an ajaxian call
@@ -48,10 +48,14 @@ $('#comments_div form').live('submit', function(){
         if(data.toString().indexOf("error_explanation") != -1){
             $(comments_div).html(data);
         }else{            
-            $(comments_div).hide(200);
+            $(comments_div).hide(400);
 
             $.get('/getCommentsContent' + '?post_id=' + post_id, function(data){
-                $(comments_content_div).html(data);
+                $(comments_content_div).html(data).show(400);
+            });
+
+            $.get('/getCommentsCount' + '?post_id=' + post_id, function(data){
+                $('#comments_count_link').html(data);
             });
         }
     });
@@ -66,11 +70,34 @@ $('#comments_link_div a').live('click', function(){
     var post_id = $(this).attr('post_id');
     var comments_div = '#comments_div_' + post_id;
    $.get('/getCommentsForm' + '?post_id=' + post_id, function(data){
-      $(comments_div).html(data);
-      $(comments_div).show(400);
+      $(comments_div).html(data).show(400);
+   });
+
+   return false;
+});
+
+$('#reply_comments_link_div a').live('click', function(){
+    var post_id = $(this).attr('post_id');
+    var parent_id = $(this).attr('parent_id');
+    var comments_div = '#reply_comments_div_' + parent_id;
+   $.get('/getCommentsForm' + '?post_id=' + post_id +
+       '&parent_id=' + parent_id , function(data){
+      $(comments_div).html(data).show(400);
    });
 
    return false;
 });
 
 // form for comments ends
+
+// comments display toggle starts
+
+$('#comments_count_link a').live('click', function(){
+    var post_id = $(this).attr('post_id');
+    var comments_div = '#comments_content_div_' + post_id;
+    $(comments_div).toggle();
+
+    return false;
+});
+
+// comments display toggle ends

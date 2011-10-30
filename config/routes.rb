@@ -34,10 +34,13 @@ Srs::Application.routes.draw do
   # comments routes
   match '/getCommentsForm' => 'comments#new'
   match '/getCommentsContent' => 'comments#comments_content'
+  match '/getCommentsCount' => 'comments#comments_count'
 
   # file upload
   match '/upload_file' => 'upload#upload_file'
   match '/upload' => 'upload#upload'
+  match '/image_upload' => 'upload#image_upload'
+  match '/upload_image' => 'upload#upload_image'
 
   root :to => "pages#home"
 

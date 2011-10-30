@@ -1,55 +1,64 @@
 <div id="comments_div">
   <% index = @posts.count %>
   <% @posts.each do |post| %>
-    <% index -= 1 %>
-    <span class="post_title">
-      <%= post.title %>
+    <div class="post">
+      <% index -= 1 %>
+      <span class="post_title">
+        <%= link_to post.title, post_path(post), :class => 'post_title' %>
 
-      <span class="post_time">
-        posted <%=  distance_of_time_in_words(Time.now, post.created_at) %> ago<br/>
-      </span>
-      <br/>
-    </span>
-
-    <span class="post_summary">
-      <i><%= post.summary %></i>
-      <br/><br/>
-    </span>
-
-    <span class="post_content">
-      <%= File.read(post.content).html_safe %>
-      <br/><br/>
-    </span>
-
-  <div style="width:95%; padding:5px;">
-    <% if signed_in? %>
-      <span id="comments_link_div">
-        <%= link_to 'Comment', '', :post_id => post.id %>        
-      </span>
-    <% else %>
-        <%= link_to 'Comment', signin_path %>
-    <% end -%>
-    
-    <% unless Comment.find_all_by_post_id(post.id).nil? %>      
-      - <strong><%= Comment.find_all_by_post_id(post.id).count %> Comments</strong><br/><br/>
-      <% if Comment.find_all_by_post_id(post.id).count > 0 %>
-        <div id='<%= "comments_content_div_#{post.id}" %>' style="background-color: #eee; padding: 5px;">
-          <%= render :partial => 'comments/comments_content', :locals => {:post_id => post.id} %>
-        </div>
-      <% end -%>
-    <% end -%>
-
-    <% if signed_in? %>
-      <span>
+        <span class="post_time">
+          posted by <%= post.user.name %>
+          on <%= post.created_at.strftime('%B  %d %Y at %l:%M:%S %P') %>
+          <br/>
+        </span>
         <br/>
-        <span id='<%= "comments_div_#{post.id}" %>' style="width:95%;"></span>
       </span>
-    <% end -%>
-  </div>
-  <br/>
 
+      <span class="post_summary">
+        <%= post.summary %>
+        <br/><br/>
+      </span>
+
+      <span class="post_content">
+        <%= File.read(post.content).html_safe %>
+        <br/><br/>
+      </span>
+
+    <div style="width:99%;">
+      <span class="comment_link">
+        <% if signed_in? %>
+          <span id="comments_link_div">
+            <%= link_to 'Comment', '', :post_id => post.id %>
+          </span>
+        <% else %>
+            <%= link_to 'Comment', signin_path %>
+        <% end -%>
+      </span>
+
+      <% unless Comment.find_all_by_post_id(post.id).nil? %>
+        - <strong>
+        <span id="comments_count_link"><%= render :partial => 'comments/comments_count', :locals => {:post_id => post.id} %></span>
+         Comments</strong><br/><br/>
+
+        <% if signed_in? %>
+          <span>
+            <span id='<%= "comments_div_#{post.id}" %>' style="width:99%;"></span>
+          </span>
+          <br/>
+        <% end -%>
+
+        <% if Comment.find_all_by_post_id(post.id).count > 0 %>
+          <div id='<%= "comments_content_div_#{post.id}" %>' style="padding: 5px; display: none;">
+            <%= render :partial => 'comments/comments_content', :locals => {:post_id => post.id} %>
+          </div>
+        <% end -%>
+      <% end -%>      
+    </div>
+  </div>
   <% if index > 0 %>
-    <hr/>
+    <br/>
+    <hr style="height: 2px; background-color: #8a1f11;"/>
   <% end -%>
+
   <% end -%>
 </div>

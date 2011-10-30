@@ -1,0 +1,10 @@
+<div style="width:30%; padding:5px; float: left;">
+  <h4>Image Upload</h4>
+  <%= form_tag('/upload_image', :multipart => true) do %>
+    <p>
+      <label for="upload_image">Select Image</label>
+      <%= file_field 'upload', 'datafile' %>
+    </p>
+    <%= submit_tag "Submit" %>
+  <% end -%>
+</div>

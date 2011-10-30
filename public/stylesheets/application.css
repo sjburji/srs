@@ -72,26 +72,39 @@
     background-color:#50506d;
 }
 
+.post{
+    background-color:#eef; padding: 5px;
+}
+
+.post_heading{
+    padding:5px;
+}
+
 .post_title{
-    font-size: 16px;
-    color:#205791;
-    font-weight: bold;
+    font-family: fantasy;
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+.post_title a{
+    color: #205791;
+    text-decoration:none;
 }
 
 .post_summary{
-    font-family: cursive;
-    font-size: 12px;
-    font-weight: normal;
+    padding:5px;
+    font-size: 14px;
 }
 
 .post_content{
-    font-size: 12px;    
+    padding:5px;
+    font-size: 12px;
 }
 
 .post_time{
+    font-family: arial;
     font-size: 12px;
     float: right;
-    color: #000;
     font-weight: normal;
 }
 
@@ -199,6 +212,14 @@ input.readonly {
 }
 
 .comment { width: 370px; height: 15px; }
+
+.comments_content{
+    font-family: arial;
+}
+
+.comment_link{
+    padding: 5px;
+}
 
 .stockchart {
 	height:80px;
