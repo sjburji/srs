@@ -15,7 +15,8 @@
     <td><%= tab.description %></td>
     <td><%= link_to 'Show', tab %></td>
     <td><%= link_to 'Edit', edit_tab_path(tab) %></td>
-    <td><%= link_to 'Destroy', tab, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= button_to "Delete", { :action => "destroy", :id => tab.id },
+          :confirm => "Are you sure?", :method => :delete %></td>
   </tr>
 <% end %>
 </table>

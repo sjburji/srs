@@ -1,42 +1,74 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/claro/claro.css" />
+<script type="text/javascript" src="/javascripts/dojo/dojo.js"
+  data-dojo-config="isDebug: true,parseOnLoad: true">
+</script>
+<script type="text/javascript">
+  dojo.require("dijit.Editor");
+  dojo.require("dijit._editor.plugins.TextColor");
+  dojo.require("dijit._editor.plugins.LinkDialog");
+  dojo.require("dijit._editor.plugins.FullScreen");
+  dojo.require("dijit._editor.plugins.ViewSource");
+  dojo.require("dijit._editor.plugins.NewPage");
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  dojo.connect(dojo.byId('new_post'), 'onsubmit', function () {
+    var editor = dijit.byId("dojo_editor_div_id");
+    var editor_value = editor.attr("value");
+    dojo.byId('post_content').value = editor_value;
+  });
+
+  function check_editor_load(){    
+    var editor_value = $('#post_content').val();
+    dijit.byId("dojo_editor_div_id").attr("value", editor_value);
+
+    return true;
+  }
+</script>
+
+<body class="claro" onload="check_editor_load()">
+  <%= form_for(@post) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :user_id %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :summary %><br />
+      <%= f.text_area :summary, :style => 'width:300px; height: 50px;' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.hidden_field :content %>
+      <div id="dojo_editor_div_id" data-dojo-type="dijit.Editor"
+         data-dojo-props="extraPlugins:['foreColor','hiliteColor','|',
+         'createLink','insertImage','fullscreen','viewsource','newpage']">
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :tab %><br />
+      <% for tab in Tab.find(:all, :conditions => "name != 'ALL'") do %>
+        <%= f.radio_button "tab_id", tab.id %><%= tab.name %>
+      <% end -%>
+    </div>
+    <br/>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <%= f.hidden_field :user_id %>
-  
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :summary %><br />
-    <%= f.text_area :summary, :style => 'width:300px; height: 50px;' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, :style => 'width:600px; height: 150px;' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tab %><br />
-    <% for tab in Tab.find(:all, :conditions => "name != 'ALL'") do %>
-      <%= f.radio_button "tab_id", tab.id %><%= tab.name %>
-    <% end -%>
-  </div>
-  <br/>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</body>

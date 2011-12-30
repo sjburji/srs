@@ -4,10 +4,13 @@
   <title><%= @title %></title>
   <%= stylesheet_link_tag 'screen.css', :media => 'screen,projection' %>
   <%= stylesheet_link_tag 'print.css', :media => 'print' %>
+
+  <!--[if lt IE 8]><stylesheet_link_tag 'ie.css' media='screen, projection'><![endif]-->
+
   <%= stylesheet_link_tag 'plugins/fancy-type/screen.css', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'application.css', :media => 'screen,projection' %>
   <%= stylesheet_link_tag 'jquery.jscrollpane.css', :media => 'screen,projection' %>
-    
+  
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag 'jit' %>
   <%= javascript_include_tag 'excanvas' %>
@@ -20,118 +23,99 @@
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-
-  <!--[if lt IE 8]><%= stylesheet_link_tag 'ie' %><![endif]-->
-  
+  <meta property="og:title" content="Dr. Surendra Rao Shankapal" />
+  <meta property="og:type" content="blog" />
+  <meta property="og:url" content="http://srspal.com" />
+  <meta property="og:image" content="http://srspal.com/images/president.gif" />
+  <meta property="og:site_name" content="Dr. Surendra Rao Shankapal&#039;s Blog" />
+  <meta property="fb:admins" content="730210922" />
 </head>
   <body>
-    <div>
-      <div>
-          <div class="masthead">
-            <span style="float:left; padding: 2px;">
-              <span style="font-family:cursive; font-weight: normal;">
-                Being oneself ...
-              </span>
-              Dr. Surendra Rao Shankpal
-            </span>
 
-            <span style="float: right;">
-              <%= link_to "Home", root_path, :class => 'round' %>
-              <%= link_to "About", about_path, :class => 'round' %>
-              <%= link_to "Contact", contact_path, :class => 'round' %>              
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
-              <% if signed_in? %>
-                <% if author_signed_in? %>
-                  <%= link_to "Dashboard", dashboard_path, :class => 'round' %>
-                <% else %>
-                  <%= link_to "My Account", user_path(current_user), :class => 'round' %>
-                <% end -%>
-                <%= link_to "Sign out", signout_path, :method => :delete, :class => 'round' %>
+    <div class="header">
+      <div class="container">
+        <div class="masthead">
+          <span style="float: right;">
+            <%= link_to "Home", root_path, :class => 'round' %>
+            <%= link_to "About", about_path, :class => 'round' %>
+            <%= link_to "Contact", contact_path, :class => 'round' %>
+
+            <% if signed_in? %>
+              <% if author_signed_in? %>
+                <%= link_to "Dashboard", dashboard_path, :class => 'round' %>
               <% else %>
-                <%= link_to "Subscribe", signup_path, :class => "round" %>
-                <%= link_to "Sign in", signin_path, :class => 'round'  %>
-              <% end %>
+                <%= link_to "My Account", user_path(current_user), :class => 'round' %>
+              <% end -%>
+              <%= link_to "Sign out", signout_path, :method => :delete, :class => 'round' %>
+            <% else %>
+              <%= link_to "Subscribe", signup_path, :class => "round" %>
+              <%= link_to "Sign in", signin_path, :class => 'round'  %>
+            <% end %>
+          </span>
 
-            </span>
+          <span style="margin: 0px; float: left; padding: 4px;">
+            <%= image_tag("president.gif", :alt => "Sample App", :size => '100x135') %>
+            <br/>
+          </span>
+
+          <div style="float:left; width:50%;">
+            <span id="foreword_content_div"></span>
           </div>
 
-          <div>
-            <span style="margin: 0px; float: left; padding: 4px;">
-              <%= image_tag("president.gif", :alt => "Sample App", :size => '100x135') %>
+          <% unless current_user.nil? %>
+            <span id="current_user_div" style="float:right; padding: 10px 8px 0px 0px;">
+              Hi <%= current_user.name %>
+              <% if author_signed_in? %>
+                <br/>
+                You have
+                <%= link_to User.find_all_by_role_id(Role::SUBSCRIBER).count, users_path %> followers
+              <% end -%>
               <br/>
             </span>
+          <% end -%>
+        </div>
+      </div>
+    </div>
 
-            <div style="float:left; padding: 4px; width:65%;">
-              <span id="foreword_content_div"></span>
-              
-              <span>
-                <% Tab.find(:all, :order => 'ID').each do |tab| %>
-                  <span class="home_tabs" id="home_tabs">
-                    <%= link_to tab.name, '', :class => "span-2",
-                      :tab_id => tab.id, :id => 'tab_id_' + tab.id.to_s %>
-                  </span>
-                <% end -%>
-              </span>
-            </div>
-
-            <% unless current_user.nil? %>
-              <span id="current_user_div" style="float:right; padding: 4px; font-weight: bold;">
-                Hi <%= current_user.name %>
-                <br/>
-                <%= link_to User.find_all_by_role_id(Role::SUBSCRIBER).count, users_path %> followers.
-                <br/>
-                
-              </span>
-            <% end -%>
-            <hr/>
-          </div>
-      </div>      
-
+    <div class="container">
       <div class="yield_content">
         <%= yield %>        
       </div>
-
-      <div class="footer">
-        <hr/>
-        <div class="footer_links" style="width:15%">
-          <div align="center"><strong>Usefel Links</strong></div>
-          <hr/>
+    </div>
+    
+    <div class="footer">
+      <div class="container">
+        <div class="footer_links" style="width:15%; float: left;">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Contact", contact_path %></li>
+          <% unless signed_in? %>
+            <li><%= link_to "Subscribe", signup_path, :class => "round" %></li>
+          <% end -%>
           
-          <ul>
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Contact", contact_path %></li>
-            <% unless signed_in? %>
-              <li><%= link_to "Subscribe", signup_path, :class => "round" %></li>
-            <% end -%>
-          </ul>
+          <li>
+            <%= link_to "Privacy Policy", privacy_path, :class => 'round' %>
+          </li>
+
+          <li>
+            <%= link_to "User Agreement", uat_path, :class => 'round' %>
+          </li>
         </div>
 
-        <div class="footer_links" style="width:55%;">
+        <div class="footer_links" style="width:25%; float: right;">
           <span id="footer_content_div"></span>
         </div>
 
-        <div class="footer_links" style="width:15%;">
-          <div>
-            <div align="center"><strong>Usage Policy</strong></div>
-            <hr/>
-
-            <ul>
-              <li>
-                <%= link_to "Privacy Policy", privacy_path, :class => 'round' %>
-              </li>
-
-              <li>
-                <%= link_to "User Agreement", uat_path, :class => 'round' %>
-              </li>
-            </ul>
-
-            &copy; 2011 srs.com
-          </div>
-        </div>
       </div>
-
     </div>
-
   </body>
 </html>

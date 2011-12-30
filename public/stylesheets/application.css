@@ -1,9 +1,30 @@
+.home_tabs{
+    background: transparent;
+}
+
+.current{
+    background: #eee;
+}
+
+.current a{
+    text-decoration: none;
+}
+
+.header{
+    font: 13px Helvetica, Arial, sans-serif;
+    color: #fff;
+    background: url(/images/header-background.jpg);
+    overflow: hidden;
+}
+
 .yield_content{
     padding:10px;
 }
 
 .footer{
+    background: url(/images/header-background.jpg);
     padding-top:10px;
+    color: #fff;
 }
 
 .footer_links{
@@ -14,16 +35,16 @@
 
 .footer_links li{
     list-style: none;
+    padding: 3px;
 }
 
 .footer_links a{
     text-decoration: none;
-    color:#205791;
-    font-weight: bold;
+    color:#7bf;
 }
 
 .footer_links a:hover{
-    color:#dedede;
+    color:#7b7b7b;
 }
 
 .dashboard{
@@ -51,29 +72,10 @@
     color:#50506d;
 }
 
-.home_tabs{
-    text-align: center;
-}
-
-.home_tabs a{
-    padding: 1px;
-    background-color: #EEE;
-    text-decoration: none;
-    color: #000;    
-}
-
-.home_tabs a:hover{
-    color: #fff;
-    background-color:#50506d;
-}
-
-.home_tabs a.current{
-    color: #fff;
-    background-color:#50506d;
-}
-
 .post{
-    background-color:#eef; padding: 5px;
+    border-left: 1px dotted #eee;
+    border-top: 1px dotted #eee;
+    padding: 5px;
 }
 
 .post_heading{
@@ -81,65 +83,112 @@
 }
 
 .post_title{
-    font-family: fantasy;
-    font-size: 25px;
-    font-weight: lighter;
+    font: 24px 'Cabin', sans-serif;
 }
 
 .post_title a{
-    color: #205791;
     text-decoration:none;
 }
 
-.post_summary{
-    padding:5px;
-    font-size: 14px;
+.post_title a:hover{
+    color: #7b7b7b;
+}
+
+.post_summary{        
+    padding:20px 20px 20px 2px;
+    font: 14px 'Cabin', sans-serif;
 }
 
 .post_content{
+    font: 13px Helvetica, Arial, sans-serif;
+    color: #7B7B7B;
     padding:5px;
-    font-size: 12px;
+}
+
+.post_content img{
+    border: 6px solid #ccc;
+    overflow: hidden;
+    max-height: 200px;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .post_time{
-    font-family: arial;
-    font-size: 12px;
     float: right;
-    font-weight: normal;
+    font-weight: bold;
+}
+
+.view_posts_header{
+    background: url(/images/side-header.png) no-repeat;
+    height: 54px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+
+.view_posts_body{
+    color: #000;
+    padding: 4px;
+}
+
+.view_posts_body li{
+    list-style: none;
+    padding: 5px;
+}
+
+.view_posts_body a{
+    text-decoration: none;
+}
+
+.view_posts_body a:hover{
+    color: #7b7b7b;
 }
 
 .recent_posts_header{
-    background-color:#175E9D;
-    font-family: arial;
-    font-weight: bold;
-    font-size: 12px;
+    background: url(/images/side-header.png) no-repeat;
+    height: 54px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
     color: #fff;
-    padding: 4px;
 }
 
 .recent_posts_body{
-    font-family: arial;
-    font-size: 12px;
     color: #000;
     padding: 4px;
+}
+
+.recent_posts_body li{
+    list-style: none;
+    padding: 5px;
 }
 
 .recent_posts_body a{
     text-decoration: none;
 }
 
+.recent_posts_body a:hover{
+    color: #7b7b7b;
+}
+
 .archive{
-    background-color:#175E9D;
-    font-family: arial;
-    font-weight: bold;
-    font-size: 12px;
+    background: url(/images/side-header.png) no-repeat;
+    height: 54px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
     color: #fff;
-    padding: 4px;
+}
+
+.archive_posts_body li{
+    list-style: none;
+    padding: 5px;
 }
 
 .archive_posts_body{
-    font-family: arial;
-    font-size: 12px;
     color: #000;
     padding: 4px;
 }
@@ -148,27 +197,22 @@
     text-decoration: none;
 }
 
+.archive_posts_body a:hover{
+    color: #7b7b7b;
+}
+
 .masthead {  
-  height:35px;
-  background-color:#000;
-  background-repeat:no-repeat;
-  color:#fff;
-  font-family:arial;
-  font-size: 12px;
+  height:105px;
 }
 
 .masthead a{
-    text-decoration: none;
-    font-size: 12px;
-    color:#175E9D;
+    color:#7bf;
     padding: 10px;
-    background-color: #fff;
-    margin-right: 4px;
+    text-decoration: none;
 }
 
 .masthead a:hover{
-    color:#fff;    
-    background-color:#205791;
+    color:#7b7b7b;
 }
 
 #logo {
@@ -181,19 +225,6 @@
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
   border-radius:         10px;
-}
-
-a.signup_button {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: center;
-  width: 150px;
-  color: #fff;
-  background: #B51F24;
-  font-size: 150%;
-  font-weight: bold;
-  padding: 10px;
 }
 
 .redbox {
@@ -214,7 +245,7 @@ input.readonly {
 .comment { width: 370px; height: 15px; }
 
 .comments_content{
-    font-family: arial;
+    color: #7B7B7B;
 }
 
 .comment_link{
@@ -260,166 +291,6 @@ th .desc {
 
 .field_error {
 	border:solid red;
-}
-
-.planbox {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  display:block;
-  text-decoration: none;
-  width: 200px;
-  color: #fff;
-  background: #B51F24;
-  padding: 10px;
-}
-
- #planbox a{
-  text-decoration: none;
-}
-
-.planbox-indiv {
-  margin-left: 2px; margin-right: 2px; margin-top: 5px; margin-bottom: 5px;
-  text-align: center;
-  width: 120px;
-  height: 60px;
-  color: #fff;
-  background: #175E9D;
-  padding-left:1px; padding-right:1px;
-  border-width:1px;
-}
-
-.planbox-corp {
-  margin-left: 2px; margin-right: 2px; margin-top: 5px; margin-bottom: 5px;
-  text-align: center;
-  width: 120px;
-  height: 60px;
-  color: #fff;
-  background: #2283C9;
-  padding-left:1px; padding-right:1px;
-  border-width:1px;
-}
-
-.planbox-od {
-  margin-left: 2px; margin-right: 2px; margin-top: 5px; margin-bottom: 5px;
-  text-align: center;
-  width: 120px;
-  height: 60px;
-  color: #fff;
-  background: #1FAEC9;
-  padding-left:1px; padding-right:1px;
-  border-width:1px;
-}
-
-  #planlist_id a{
-  text-decoration: none;
-  float:left;
-  padding-left:20px;
-  padding-bottom:20px;
-  line-height:17px;
-}
-
-.planbox-title {
-	text-decoration: underline;
-	color:black;
-	text-align:center;
-	font-size:150%;	
-	display:block;
-}
-
-.planbox-plantitle {
-	text-decoration: underline;
-	color:black;
-	text-align:center;
-	font-size:100%;
-	font-weight:bold;
-	display:block;
-}
-
-.planbox-rupee-symbol {
-	font-weight:normal;
-	font-size:20px;
-	width:10px;
-	position:absolute;
-	padding-left:10px;
-	padding-top:10px;
-}
-
-.planbox-rupee {
-	text-align:center;
-	font-size:50px;
-	margin-left:22px;	
-}
-
-.planbox-paise {
-	font-weight:normal;
-	font-size:15px;
-	width:10px;
-	position:absolute;
-	padding-top:10px;
-}
-
-.planbox-freemonths {
-	font-size:15px;
-}
-
-.planbox-fees {
-	text-align:left;
-}
-
-#plan_duration_css_id {
-  margin-left: 35%;
-  text-decoration: none;
-}
-
-.plan{
-  text-decoration: none;
-  float: left;
-  padding: 1px;
-  width: 32.5%;
-  height: 32px;
-}
-
-
-.current{
-    background: #B51F24;
-    text-decoration: none;
-}
-
-.current-plan{
-    text-decoration: none;
-    color: #fff;
-}
-
-.plan-buttonpanel {
-  display:block;
-  width: 240px;
-  height:35px;
-  line-height: 35px;
-  margin-bottom:20px;
-  background: lightgrey;
-  text-align: center;
-}
-
-.plan-button {
-	font-weight:bold;
-  text-align: center;
-	display:inline-block;
-  width: 100px;
-	padding: 10px;
-  color: #fff;
-}
-
-.plan-button-current {
-  background: #B51F24;
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
-}
-
-.plan-category {
-	font-weight:bold;
-	font-size:120%;
 }
 
 div.heading {
@@ -490,8 +361,6 @@ table.form tbody td {font-size:120%;font-weight:normal;}
   text-align: center;
   background: #175E9D;
   padding: 1px;
-  font-family: arial;
-  font-size: 12px;
   color: #fff;
   border: 1px outset grey;
 }
@@ -500,4 +369,22 @@ table.form tbody td {font-size:120%;font-weight:normal;}
     width:600px;
     left:200px;
     color:#ccc;
+}
+
+.ribbon {
+  background: url(/images/ribbon.png) no-repeat;
+  color: #fff;
+  font-family: 'Cabin', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 60px;
+  line-height: 30px;
+  left: -15px;
+  width: 241px;
+  top: 0;
+  text-shadow: #666 1px 1px 2px;
+  padding: 0 0 0 20px;
+  z-index: 3;
+  position: relative;
 }

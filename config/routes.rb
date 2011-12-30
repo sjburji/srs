@@ -1,10 +1,8 @@
 Srs::Application.routes.draw do
-  resources :tabs
-
-  get "sessions/new"
-
   resources :comments, :posts, :users, :cms, :tabs
   resources :sessions, :only => [:new, :create, :destroy]
+
+  get "sessions/new"
 
   match '/' => "pages#home"
   match '/dashboard' => "pages#dashboard"

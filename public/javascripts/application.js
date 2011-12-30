@@ -20,11 +20,11 @@ $('#home_tabs a').live('click', function(){
    // reset css class for all tab nodes
    $('#home_tabs a').each(function(){
         var current_child = '#' + $(this).attr('id');
-        $(current_child).attr('class', $(tab_id).attr('class'));
+        $(current_child).parent().attr('class', 'home_tabs');
    });
 
-   var current = $(tab_id).attr('class').toString() + ' current';   
-   $(tab_id).attr('class', current);
+   var current = 'current';   
+   $(tab_id).parent().attr('class', current);
 
    $.get('/getHomePagePosts?' + 'tab_id=' + current_id, function(data){
         $('#home_page_posts_div').html(data);
@@ -40,6 +40,7 @@ $('#comments_div form').live('submit', function(){
     var post_id = $('#comment_post_id').val();
     var comments_div = '#comments_div_' + post_id;
     var comments_content_div = '#comments_content_div_' + post_id;
+    var comments_count_link_div = '#comments_count_link_' + post_id;
     var loading_msg = '<img src="/images/ajax-loading.gif" alt="loading ... "/>';
     $(comments_div).html(loading_msg);
 
@@ -52,10 +53,10 @@ $('#comments_div form').live('submit', function(){
 
             $.get('/getCommentsContent' + '?post_id=' + post_id, function(data){
                 $(comments_content_div).html(data).show(400);
-            });
 
-            $.get('/getCommentsCount' + '?post_id=' + post_id, function(data){
-                $('#comments_count_link').html(data);
+                $.get('/getCommentsCount' + '?post_id=' + post_id, function(data){
+                    $(comments_count_link_div).html(data).show(200);
+                });
             });
         }
     });

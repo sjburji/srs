@@ -1,6 +1,11 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :tab
+  
+  validates :tab, :presence => true
+  validates :title, :presence => true
+  validates :summary, :presence => true
+  validates :content, :presence => true
 
   before_save :set_defaults
 

@@ -17,7 +17,8 @@
     <td><%= comment.user_id %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= button_to "Delete", { :action => "destroy", :id => comment.id },
+          :confirm => "Are you sure?", :method => :delete %></td>
   </tr>
 <% end %>
 </table>

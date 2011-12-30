@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def edit
     if signed_in? && author_signed_in?
       @post = Post.find(params[:id])
-      @post.content = File.read(@post.content).html_safe
+      @post.content = File.read(@post.content)
     else
       redirect_to root_path
     end
@@ -90,12 +90,11 @@ class PostsController < ApplicationController
     if signed_in? && author_signed_in?
       @post = Post.find(params[:id])
       @post.destroy
-
-      respond_to do |format|
-        format.html { redirect_to(posts_url) }
-      end
-    else
-      redirect_to root_path
+    end
+    
+    respond_to do |format|
+      format.html{ redirect_to posts_url}
+      format.xml { head :ok}
     end
   end
 
@@ -114,7 +113,7 @@ class PostsController < ApplicationController
   end
 
   def show_home_page_posts
-    @posts = Post.find(:all, :order => 'CREATED_AT DESC')
+    @posts = Post.find(:all, :order => 'CREATED_AT DESC').first(10)
     
     unless params[:tab_id].nil?
       if Tab.find_by_name('ALL').id != params[:tab_id].to_i
