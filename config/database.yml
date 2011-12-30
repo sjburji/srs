@@ -34,7 +34,7 @@ test:
 
 production:
   adapter: mysql
-  database: mysqlsrsdb
+  database: srspaldb
   username: srspal
   password: supreme123
   encoding: utf8
