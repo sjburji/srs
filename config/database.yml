@@ -34,7 +34,9 @@ test:
 
 production:
   adapter: mysql
-  database: srsprod
-  username: srs
-  password: srs
+  database: mysqlsrsdb
+  username: srspal
+  password: supreme123
+  encoding: utf8
+  host: mysqlsrsdb.srspal.com
 
