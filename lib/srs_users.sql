@@ -1,0 +1,2 @@
+Insert into "table_export" (ID,NAME,EMAIL,CREATED_AT,UPDATED_AT,ROLE_ID,ENCRYPTED_PASSWORD,SALT,IMAGE) values (10000,'Dr. Surendra Rao Shankapal','srs@msrsas.org',to_timestamp('21-07-11','DD-MM-RR HH12:MI:SSXFF AM'),to_timestamp('30-12-11','DD-MM-RR HH12:MI:SSXFF AM'),1,'8cbad9858f9e0f486ce42372a9fa883be3cb957b97b36a9dd73b7560164832e6','e4b770adaadac91aec08a0b40a31f86a5fa207e812b8800764c48933cf141bd0','/images/profiles/10000.gif');
+/
