@@ -18,13 +18,13 @@
       <td>Filename</td>
       <td>Filepath</td>
     </tr>
-    <% Dir.foreach("current/public/data/images") do |entry| %>
+    <% Dir.foreach("/data/images") do |entry| %>
       <% if entry != "." && entry != ".." %>
         <tr>
           <% index += 1 %>
           <td><%= index %>.</td>
           <td><%= entry %></td>
-          <td>http://srspal.com/current/public/data/images/<%= entry %></td>
+          <td>http://srspal.com/data/images/<%= entry %></td>
         </tr>
       <% end -%>
     <% end -%>
