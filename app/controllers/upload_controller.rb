@@ -30,6 +30,11 @@ class UploadController < ApplicationController
   def upload
     if signed_in? and author_signed_in?
       @title = 'UPLOAD'
+      if RAILS_ENV == 'production'
+        @file_path = "current/public/data/images"
+      else
+        @file_path = "public/data/images"
+      end
     else
       redirect_to root_path
     end

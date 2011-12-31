@@ -18,7 +18,7 @@
       <td>Filename</td>
       <td>Filepath</td>
     </tr>
-    <% Dir.foreach("/data/images") do |entry| %>
+    <% Dir.foreach(@file_path) do |entry| %>
       <% if entry != "." && entry != ".." %>
         <tr>
           <% index += 1 %>

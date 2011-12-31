@@ -8,9 +8,9 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.html
       end
-    end
-
-    redirect_to root_path
+    else
+      redirect_to root_path
+    end    
   end
 
   # GET /users/1
