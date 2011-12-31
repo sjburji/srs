@@ -8,9 +8,9 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.html
       end
-    else
-      redirect_to root_path
     end
+
+    redirect_to root_path
   end
 
   # GET /users/1
@@ -55,8 +55,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user
-        flash[:success] = "Welcome to the Sample App!"
-        redirect_to @user
+        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
       else
         @title = "Sign up"
         flash[:error] = "Signup error!"
