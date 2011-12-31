@@ -31,7 +31,7 @@ class UploadController < ApplicationController
     if signed_in? and author_signed_in?
       @title = 'UPLOAD'
       if RAILS_ENV == 'production'
-        @file_path = "current/public/data/images"
+        @file_path = "data/images"
       else
         @file_path = "public/data/images"
       end
