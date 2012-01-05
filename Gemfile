@@ -5,3 +5,4 @@ gem "transitions", :require => ["transitions", "active_record/transitions"]
 gem 'jquery-rails', '>= 1.0.12'
 gem 'rake'
 gem 'mysql'
+

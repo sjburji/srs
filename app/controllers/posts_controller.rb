@@ -10,14 +10,14 @@ class PostsController < ApplicationController
       end
     else
       redirect_to root_path
-    end   
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.xml
-  def show    
+  def show
     @post = Post.find(params[:id])
-    
+
     respond_to do |format|
       format.html
     end
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # PUT /posts/1
+# PUT /posts/1
   # PUT /posts/1.xml
   def update
     if signed_in? && author_signed_in?
@@ -91,7 +91,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       @post.destroy
     end
-    
+
     respond_to do |format|
       format.html{ redirect_to posts_url}
       format.xml { head :ok}
@@ -114,7 +114,7 @@ class PostsController < ApplicationController
 
   def show_home_page_posts
     @posts = Post.find(:all, :order => 'CREATED_AT DESC').first(10)
-    
+
     unless params[:tab_id].nil?
       if Tab.find_by_name('ALL').id != params[:tab_id].to_i
         @posts = Post.find_all_by_tab_id(params[:tab_id].to_i,
@@ -123,7 +123,7 @@ class PostsController < ApplicationController
     end
 
     @comment = Comment.new
-    
+
     render :partial => 'show_home_page_posts'
   end
 
@@ -135,6 +135,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   def view_archive
     archive_id = params[:archive_id].to_s
     start_date = '01 ' + archive_id
@@ -142,9 +143,10 @@ class PostsController < ApplicationController
 
     @posts = Post.find(:all, :conditions => ['CREATED_AT >= ? AND CREATED_AT <= ?',
         start_date.to_date, expiry_date.to_date])
-    
+
     respond_to do |format|
       format.html
     end
   end
 end
+

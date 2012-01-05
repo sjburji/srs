@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @title = 'HOME'    
+    @title = 'Being oneself - Dr. Surendra Rao Shankapal'    
   end
 
   def contact
