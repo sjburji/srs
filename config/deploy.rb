@@ -40,8 +40,8 @@ namespace :deploy do
 
   desc "set the create_file_link"
   task :create_file_link, :roles => :app do
-    run "ln -s #{deploy_to}/data #{current_path}/public/data"
-    run "ln -s #{deploy_to}/profiles #{current_path}/public/images/profiles"
+    run "ln -s #{deploy_to}/data #{current_path}/public"
+    run "ln -s #{deploy_to}/profiles #{current_path}/public/images"
   end
 
   task :start do ; end
