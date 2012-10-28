@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 set :user, 'srspal'  # Your dreamhost account's username
 set :domain, 'pulcherrima.dreamhost.com'  # Dreamhost servername where your account is located 
 set :project, 'srs'  # Your application as its called in the repository
@@ -10,14 +12,18 @@ set :scm, :git
 set :scm_username, 'sjburji'
 set :repository,  "git@github.com:sjburji/srs.git"
 
-# roles (servers)
-role :web, domain
-role :app, domain
-role :db,  domain, :primary => true
+task :production do
+	set :default_environment, { "PATH" => 
+    "/usr/bin:/usr/lib/ruby/gems/1.8/bin:$PATH" }
+	# deploy config
+	set :deploy_to, applicationdir
+	set :deploy_via, :export
+	# roles (servers)
+	role :web, domain
+	role :app, domain
+	role :db,  domain, :primary => true
+end
 
-# deploy config
-set :deploy_to, applicationdir
-set :deploy_via, :export
 
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
