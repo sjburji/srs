@@ -2,7 +2,7 @@ class UploadController < ApplicationController
   def upload_file
     if signed_in? and author_signed_in?
     	if Rails.env == 'production'
-    		file_path = Rails.root.to_s + '/data/images'
+    		file_path = Settings.deploy_path + '/data/images'
     	else
     		file_path = 'public/data/images'
     	end
@@ -18,7 +18,7 @@ class UploadController < ApplicationController
       upload = params[:upload]
       user_id = current_user.id
       if Rails.env == 'production'
-    		path = Rails.root.to_s + '/images/profiles'
+    		path = Settings.deploy_path + '/images/profiles'
     	else
     		path = 'public/images/profiles'
     	end
@@ -39,7 +39,7 @@ class UploadController < ApplicationController
     if signed_in? and author_signed_in?
       @title = 'UPLOAD'
       if Rails.env == 'production'
-        @file_path = Rails.root.to_s + "/data/images"
+        @file_path = Settings.deploy_path + "/data/images"
       else
         @file_path = "public/data/images"
       end

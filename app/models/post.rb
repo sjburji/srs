@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   def set_defaults
     file_name = self.tab.name.downcase + '_' + Time.now.to_f.to_s + '.txt'
     if Rails.env == 'production'
-      directory = Rails.root.to_s + '/data/posts/'
+      directory = Settings.deploy_path + '/data/posts/'
     else
       directory = 'public/data/posts/'
     end

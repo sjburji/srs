@@ -1,3 +1,4 @@
 development:
   site_url: "http://localhost:3000"
+  deploy_path: ""
   
