@@ -18,7 +18,7 @@ class UploadController < ApplicationController
       upload = params[:upload]
       user_id = current_user.id
       if Rails.env == 'production'
-    		path = Settings.deploy_path + '/images/profiles'
+    		path = Settings.deploy_path + '/profiles'
     	else
     		path = 'public/images/profiles'
     	end
