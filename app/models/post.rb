@@ -12,7 +12,11 @@ class Post < ActiveRecord::Base
   private
   def set_defaults
     file_name = self.tab.name.downcase + '_' + Time.now.to_f.to_s + '.txt'
-    directory = '/home/srspal/srspal.com/current/public/data/posts/'
+    if Rails.env == 'production'
+      directory = Rails.root.to_s + '/data/posts/'
+    else
+      directory = 'public/data/posts/'
+    end
     File.atomic_write(directory + file_name) do |file|
       file.write(self.content)
     end

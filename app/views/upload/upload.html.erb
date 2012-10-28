@@ -24,7 +24,7 @@
           <% index += 1 %>
           <td><%= index %>.</td>
           <td><%= entry %></td>
-          <td>http://srspal.com/data/images/<%= entry %></td>
+          <td><%= Settings.site_url + '/data/images/' + entry.to_s %></td>
         </tr>
       <% end -%>
     <% end -%>

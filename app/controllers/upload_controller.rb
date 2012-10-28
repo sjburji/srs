@@ -1,7 +1,12 @@
 class UploadController < ApplicationController
   def upload_file
     if signed_in? and author_signed_in?
-      DataFile.save(params[:upload], '/home/srspal/srspal.com/current/public/data/images')
+    	if Rails.env == 'production'
+    		file_path = Rails.root.to_s + '/data/images'
+    	else
+    		file_path = 'public/data/images'
+    	end
+      DataFile.save(params[:upload], file_path)
       redirect_to upload_path
     else
       redirect_to root_path
@@ -12,12 +17,15 @@ class UploadController < ApplicationController
     if signed_in?
       upload = params[:upload]
       user_id = current_user.id
-      path = '/home/srspal/srspal.com/current/public/images/profiles'
-      filename_extension =  File.extname(upload['datafile'].original_filename)
-      upload['datafile'].original_filename = user_id.to_s + filename_extension
-      DataFile.save(upload, path)
+      if Rails.env == 'production'
+    		path = Rails.root.to_s + '/images/profiles'
+    	else
+    		path = 'public/images/profiles'
+    	end
+    	filename_extension = File.extname(upload[:datafile].original_filename)
+      DataFile.save(upload, path, user_id.to_s + filename_extension)
       user = User.find(user_id)
-      directory_path = 'http://srspal.com/images/profiles/' + user_id.to_s + filename_extension
+      directory_path = Settings.site_url + '/images/profiles/' + user_id.to_s + filename_extension
       user.image = directory_path
       user.save(:validate => false)
 
@@ -30,8 +38,8 @@ class UploadController < ApplicationController
   def upload
     if signed_in? and author_signed_in?
       @title = 'UPLOAD'
-      if RAILS_ENV == 'production'
-        @file_path = "/home/srspal/srspal.com/current/public/data/images"
+      if Rails.env == 'production'
+        @file_path = Rails.root.to_s + "/data/images"
       else
         @file_path = "public/data/images"
       end
