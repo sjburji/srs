@@ -15,10 +15,6 @@ class PagesController < ApplicationController
     @title = 'PRIVACY POLICY'
   end
 
-  def uat
-    @title = 'USER AGREEMENT TERMS'
-  end
-
   def dashboard
     if signed_in? && author_signed_in?
       @title = 'DASHBOARD'

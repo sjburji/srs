@@ -4,3 +4,9 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 config/database.yml
+public/data
+public/data/*
+public/data/posts
+public/data/posts/*
+public/images/profiles
+public/images/profiles/*

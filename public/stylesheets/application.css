@@ -1,9 +1,17 @@
+body{
+	font-family: arial,verdana,helvetica,tahoma,Sans-serif;
+}
+
+.container{
+	text-shadow: #666 0px 0px 1px;	
+}
+
 .home_tabs{
     background: transparent;
 }
 
 .current{
-    background: #eee;
+    background: #bbb;
 }
 
 .current a{
@@ -11,10 +19,9 @@
 }
 
 .header{
-    font: 13px Helvetica, Arial, sans-serif;
+    font: normal normal 12px 'Terminal Dosis Light', arial, serif;
+    background-color: rgb(221, 211, 158);
     color: #fff;
-    background: url(/images/header-background.jpg);
-    overflow: hidden;
 }
 
 .yield_content{
@@ -28,23 +35,17 @@
 }
 
 .footer_links{
-    width:150px;
-    float:left;
-    margin-left: 50px;
-}
-
-.footer_links li{
-    list-style: none;
-    padding: 3px;
+  float: left;
 }
 
 .footer_links a{
     text-decoration: none;
-    color:#7bf;
+    color:#888;
+    padding: 10px;
 }
 
 .footer_links a:hover{
-    color:#7b7b7b;
+    color: #ccc;
 }
 
 .dashboard{
@@ -52,8 +53,7 @@
 }
 
 .dashboard li{
-    padding:5px;
-    width:100px;
+    width: 100px;
     height:50px;
     margin: 5px;
     float:left;
@@ -72,22 +72,27 @@
     color:#50506d;
 }
 
-.post{
-    border-left: 1px dotted #eee;
-    border-top: 1px dotted #eee;
-    padding: 5px;
-}
+.post{}
 
 .post_heading{
-    padding:5px;
+    padding: 0px;
 }
 
-.post_title{
-    font: 24px 'Cabin', sans-serif;
+.post h3{
+		margin: 0px 0px 10px 0px;
+		padding: 0px 0px 7px 0px;
+		color: #242424;
+		font: 29px 'Terminal Dosis Light', arial, serif;
+		text-decoration: none;
+		text-align: left;
+		line-height: 1.4em;
+		border-bottom: 2px solid rgb(188, 213, 134)
 }
 
 .post_title a{
-    text-decoration:none;
+		font: 30px 'Terminal Dosis Light GFS', arial, serif;
+		color: rgb(6, 19, 39);
+    text-decoration: none;
 }
 
 .post_title a:hover{
@@ -95,14 +100,12 @@
 }
 
 .post_summary{        
-    padding:20px 20px 20px 2px;
-    font: 14px 'Cabin', sans-serif;
+    font: normal normal 12px 'Terminal Dosis Light', arial, serif;
+    height: 20px;
 }
 
 .post_content{
-    font: 13px Helvetica, Arial, sans-serif;
-    color: #7B7B7B;
-    padding:5px;
+    font: normal normal 14px 'Terminal Dosis Light', arial, serif;
 }
 
 .post_content img{
@@ -121,16 +124,15 @@
 }
 
 .view_posts_header{
-    background: url(/images/side-header.png) no-repeat;
-    height: 54px;
+    height: 20px;
+    background-color: #394;
     font-size: 16px;
     text-align: center;
-    line-height: 40px;
+    line-height: 20px;
     color: #fff;
 }
 
 .view_posts_body{
-    color: #000;
     padding: 4px;
 }
 
@@ -140,24 +142,24 @@
 }
 
 .view_posts_body a{
+    color: #888;
     text-decoration: none;
 }
 
 .view_posts_body a:hover{
-    color: #7b7b7b;
+    color: #ccc;
 }
 
 .recent_posts_header{
-    background: url(/images/side-header.png) no-repeat;
-    height: 54px;
+    height: 20px;
+    background-color: #394;
     font-size: 16px;
     text-align: center;
-    line-height: 40px;
+    line-height: 20px;
     color: #fff;
 }
 
 .recent_posts_body{
-    color: #000;
     padding: 4px;
 }
 
@@ -167,19 +169,20 @@
 }
 
 .recent_posts_body a{
+    color: #888;
     text-decoration: none;
 }
 
 .recent_posts_body a:hover{
-    color: #7b7b7b;
+    color: #ccc;
 }
 
 .archive{
-    background: url(/images/side-header.png) no-repeat;
-    height: 54px;
+    height: 20px;
+    background-color: #394;
     font-size: 16px;
     text-align: center;
-    line-height: 40px;
+    line-height: 20px;
     color: #fff;
 }
 
@@ -189,30 +192,31 @@
 }
 
 .archive_posts_body{
-    color: #000;
     padding: 4px;
 }
 
 .archive_posts_body a{
+    color: #888;
     text-decoration: none;
 }
 
 .archive_posts_body a:hover{
-    color: #7b7b7b;
+    color: #ccc;
 }
 
 .masthead {  
-  height:105px;
+	font-family: "BentonSans Regular", "Myriad Pro", Myriad, "Trebuchet MS", Trebuchet, Arial, sans-serif;
+	color: #000;
 }
 
 .masthead a{
-    color:#7bf;
+    color: #888;
     padding: 10px;
     text-decoration: none;
 }
 
 .masthead a:hover{
-    color:#7b7b7b;
+    color: #ccc;
 }
 
 #logo {
@@ -249,142 +253,11 @@ input.readonly {
 }
 
 .comment_link{
-    padding: 5px;
-}
-
-.stockchart {
-	height:80px;
-	width:450px;
-	border-width:2px;
-	border-color:black;
-	border-style:dotted;
-}
-
-.statchart {
-	height:250px;
-	width:620px;
-	border-width:1px;
-	border-color:black;
-	border-style:dotted;
-}
-
-.tooltip {
-	background-color:lightblue;
-	border-width:1px;
-	border-color:black;	
-	border-style:solid;	
-}
-
-th .current {
-  padding-right: 12px;
-  background-repeat: no-repeat;
-  background-position: right center;
-}
-
-th .asc {
-  background-image: url(../images/up_arrow.gif);
-}
-
-th .desc {
-  background-image: url(../images/down_arrow.gif);
-}
-
-.field_error {
-	border:solid red;
-}
-
-div.heading {
-	padding:0.4em;
-	margin-bottom:0.4em;
-	border:2px solid black;
-	border-top-style:none;
-	border-right-style:none;
-	border-left-style:solid;
-	border-bottom-style:solid;
-	font-size:110%;
-  color: #fff;
-  background: #B51E24;
-	
-}
-
-input.simple {
-	border-top-style:none;
-	border-right-style:none;
-	border-left-style:none;
-	border-bottom-style:solid;
-	margin:0px;
-	padding:0px;
-	padding-top:4px;
-	font-size:16px;
-}
-
-.menu-button {
-	width:81px;
-}
-
-.menu-icon {
-	width:100%;
-	margin-left:7px;
-}
-
-.menu-text {
-	text-align:center;
-	width:100%;
-}
-
-.menu-color {
-	background: #B51E24;
-	border: 5px ridge #B51E24;
-	color: #fff;
-}
-
-table.form tbody tr:nth-child(even) td, tbody tr.even td {background:#fff;}
-table.form tbody td {font-size:120%;font-weight:normal;}
-
-.first-row {
-	padding:5px 0 5px 5px;
-	background: url(../images/library_bg.jpg);
-	font-size:12px;
-}
-
-.card_search_planbox {
-  height: 150px;
-  margin: auto;
-  display:block;
-  text-decoration: none;
-  background: #eee;
-  padding: 10px;
-}
-
-.activity_links a{
-  text-decoration: none;
-  text-align: center;
-  background: #175E9D;
-  padding: 1px;
-  color: #fff;
-  border: 1px outset grey;
-}
-
-#center-container {
-    width:600px;
-    left:200px;
-    color:#ccc;
+    padding: 0px;
 }
 
 .ribbon {
-  background: url(/images/ribbon.png) no-repeat;
-  color: #fff;
-  font-family: 'Cabin', sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  text-transform: uppercase;
-  height: 60px;
-  line-height: 30px;
-  left: -15px;
-  width: 241px;
-  top: 0;
+  font: normal normal 11px 'Terminal Dosis Light', arial, serif;text-transform: uppercase;
   text-shadow: #666 1px 1px 2px;
-  padding: 0 0 0 20px;
-  z-index: 3;
-  position: relative;
+  float: right;
 }

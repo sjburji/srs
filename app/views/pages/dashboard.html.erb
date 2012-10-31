@@ -2,27 +2,20 @@
 
 <% if signed_in? && author_signed_in? %>
   <ul class="dashboard">
-    <p>Create, Edit and Delete Posts</p>
     <%= link_to posts_path  do %>
-      <li class="round">POSTS</li>
+      <li class="round">Posts</li>
     <% end -%>
-    <hr/>
 
-    <p>Create, Edit and Delete Users</p>
     <%= link_to users_path do %>
-      <li class="round">USERS</li>
+      <li class="round">Users</li>
     <% end -%>
-    <hr/>
 
-    <p>Content Management System</p>
     <%= link_to cms_path do %>
-      <li class="round">CMS</li>
+      <li class="round">Cms</li>
     <% end -%>
-    <hr/>
 
-    <p>Upload Images, videos, pdfs and much more</p>
     <%= link_to upload_path do %>
-      <li class="round">UPLOAD</li>
+      <li class="round">Files Upload</li>
     <% end -%>
   </ul>
 <% end -%>

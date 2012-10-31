@@ -68,12 +68,6 @@ class CmsController < ApplicationController
     render :partial => 'about'
   end
 
-  def uat
-    @uat = Cm.find_by_section_and_active('USER AGREEMENT TERMS', 'Y')
-
-    render :partial => 'uat'
-  end
-
   def privacy
     @privacy = Cm.find_by_section_and_active('PRIVACY POLICY', 'Y')
 

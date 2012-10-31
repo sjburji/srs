@@ -1,25 +1,21 @@
 <div id="comments_div">
   <% index = @posts.count %>
   <% @posts.each do |post| %>
-    <div class="post">
+    <div class="post" style="width: 700px;">
       <% index -= 1 %>
-      <span class="post_title">
-        <p class="ribbon">
+      <h3 class="post_title">
+        <%= link_to post.title, post_path(post), :class => 'post_title' %>
+        <span class="ribbon">
           <%= post.created_at.strftime('%d %b %Y %l:%M %P') %>
-        </p>
+        </span>
+      </h3>
 
-        <%= link_to post.title, post_path(post), :class => 'post_title' %>      
-        <br/>
-      </span>
-
-      <span class="post_summary">
+      <h6 class="post_summary">
         <%= post.summary %>
-        <br/><br/>
-      </span>
+      </h6>
 
       <span class="post_content">
         <%= File.read(post.content).html_safe %>
-        <br/><br/>
       </span>
 
     <div style="width:99%;">
@@ -36,10 +32,10 @@
       <span class="comment_link">
         <% if signed_in? %>
           <span id="comments_link_div">
-            <%= link_to 'Write a Comment', '', :post_id => post.id %>
+            <%= link_to 'Comment?', '', :post_id => post.id %>
           </span>
         <% else %>
-            <%= link_to 'Write a Comment', signin_path %>
+            <%= link_to 'Comment?', signin_path %>
         <% end -%>
       </span>
 

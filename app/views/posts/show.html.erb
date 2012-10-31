@@ -5,25 +5,20 @@
   </p>
 <% end -%>
 
-  <div id="comments_div" class="post">
+  <div id="comments_div" class="post" style="width: 930px;">
     <div class="post_heading">
-      <p class="ribbon">
-        <%= @post.created_at.strftime('%d %b %Y %l:%M %P') %>
-      </p>
-
-      <span class="post_title">
+      <h3 class="post_title">
         <%= @post.title %>
-      </span>    
+        <span class="ribbon"><%= @post.created_at.strftime('%d %b %Y %l:%M %P') %></span>
+      </h3>    
     </div>
     
-    <span class="post_summary">
+    <h6 class="post_summary">
       <%= @post.summary %>
-      <br/><br/>
-    </span>
+    </h6>
 
     <span class="post_content">
       <%= File.read(@post.content).html_safe %>
-      <br/><br/>
     </span>
 
     <div style="width:99%;">
@@ -40,10 +35,10 @@
       <span class="comment_link">
         <% if signed_in? %>
           <span id="comments_link_div">
-            <%= link_to 'Write a Comment', '', :post_id => @post.id %>
+            <%= link_to 'Comment?', '', :post_id => @post.id %>
           </span>
         <% else %>
-            <%= link_to 'Write a Comment', signin_path %>
+            <%= link_to 'Comment?', signin_path %>
         <% end -%>
       </span>
 

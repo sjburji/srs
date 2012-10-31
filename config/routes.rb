@@ -8,7 +8,6 @@ Srs::Application.routes.draw do
   match '/dashboard' => "pages#dashboard"
   match '/about' => "pages#about"
   match '/privacy' => "pages#privacy_policy"
-  match '/uat' => "pages#uat"
   match '/contact' => "pages#contact"
   match '/signup' =>  "users#new"
   match '/signin',  :to => 'sessions#new'
@@ -20,7 +19,6 @@ Srs::Application.routes.draw do
   match '/getAboutContent' => 'cms#about'
   match '/getContactContent' => 'cms#contact'
   match '/getPrivacyContent' => 'cms#privacy'
-  match '/getUatContent' => 'cms#uat'
   
   # posts routes
   match '/getRecentPosts' => 'posts#recent_posts'
