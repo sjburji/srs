@@ -1,4 +1,5 @@
 development:
   site_url: "http://localhost:3000"
   deploy_path: ""
+  mail_to_id: "shankapal@gmail.com"
   

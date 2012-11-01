@@ -36,6 +36,7 @@ namespace :deploy do
   after "deploy:update_code" do
   	run "cp #{deploy_to}/shared/database.yml #{release_path}/config/database.yml"    
   	run "cp #{deploy_to}/shared/application.yml #{release_path}/config/application.yml"    
+    run "cp #{deploy_to}/shared/setup_mail.rb #{release_path}/config/initializers/setup_mail.rb"
   end
 
   desc "set the create_file_link"

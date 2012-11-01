@@ -257,7 +257,23 @@ input.readonly {
 }
 
 .ribbon {
-  font: normal normal 11px 'Terminal Dosis Light', arial, serif;text-transform: uppercase;
+  font: normal normal 11px 'Terminal Dosis Light', arial, serif;
   text-shadow: #666 1px 1px 2px;
   float: right;
+}
+
+.mailer{
+	background-color: #eee;
+	font: normal normal 11px 'Terminal Dosis Light', arial, serif;
+}
+
+.mailer_header{
+	height: 40px;
+}
+
+.mailer_header a{
+	text-decoration: none;
+	font: normal normal 29px 'Terminal Dosis Light', arial, serif;
+	line-height: 40px;
+	text-align: center;
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style type="text/css">
+    	.mailer{
+				background-color: #eee;
+				font: normal normal 13px 'Terminal Dosis Light', arial, serif;
+				border: 2px solid #ccc;
+				min-height: 200px;
+				padding: 5px;
+			}
+
+			.mailer_header{
+				background-color: #234786;
+				width: 920px;
+				height: 40px;
+			}
+
+			.mailer_header a{
+				text-decoration: none;
+				font: normal bold 25px 'Terminal Dosis Light', arial, serif;
+				line-height: 40px;
+				text-align: center;
+				padding: 10px;
+				color: #fff;
+			}
+    </style>
+  </head>
+	<body>
+		<div class='mailer'>
+			<p class="mailer_header">
+				<%= link_to 'srspal.com', 'http://www.srspal.com' %>
+			</p>
+			<br/>
+			Hi,
+			<hr/>
+
+			<%= @comment.user.name %> commented on <b><%= @comment.post.title %></b>. 
+			<br/>
+			<i>" <%= @comment.content %> "</i>
+			<br/><br/>
+			<%= link_to 'Click here', Settings.site_url + post_path(@comment.post) %> to view the comment.
+			<hr/>
+
+			<br/>
+			Thanks and Regards,<br/>
+			webmaster@srspal.com
+		</div>
+	</body>
+</html>

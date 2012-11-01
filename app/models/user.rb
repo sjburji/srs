@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
   
   before_save :encrypt_password
   before_validation :set_defaults
+  after_save :send_mailer
+
+  def send_mailer
+    PostMailer.user_subscription(self.id).deliver
+  end
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
