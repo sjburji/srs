@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validates :content, :presence => true
 
   before_save :set_defaults
-  after_save :send_mailer
+  after_create :send_mailer
 
   def send_mailer
     PostMailer.post_creation_notification(self.id).deliver    

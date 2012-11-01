@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   
   before_save :encrypt_password
   before_validation :set_defaults
-  after_save :send_mailer
+  after_create :send_mailer
 
   def send_mailer
     PostMailer.user_subscription(self.id).deliver
