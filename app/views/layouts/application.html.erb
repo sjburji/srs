@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= @title %></title>
-  <%= stylesheet_link_tag 'screen.css', :media => 'screen,projection' %>
-  <%= stylesheet_link_tag 'print.css', :media => 'print' %>
+	<head>
+	  <title><%= @title %></title>
+	  <%= stylesheet_link_tag 'screen.css', :media => 'screen,projection' %>
+	  <%= stylesheet_link_tag 'print.css', :media => 'print' %>
+	  <%= stylesheet_link_tag 'plugins/fancy-type/screen.css', :media => 'screen, projection' %>
+	  <%= stylesheet_link_tag 'application.css', :media => 'screen,projection' %>
+	  <%= stylesheet_link_tag 'jquery.jscrollpane.css', :media => 'screen,projection' %>
+	  
+	  <%= javascript_include_tag :defaults %>
+	  <%= csrf_meta_tag %>
 
-  <!--[if lt IE 8]><stylesheet_link_tag 'ie.css' media='screen, projection'><![endif]-->
+	  <!--[if lt IE 9]>
+	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	  <![endif]-->
 
-  <%= stylesheet_link_tag 'plugins/fancy-type/screen.css', :media => 'screen, projection' %>
-  <%= stylesheet_link_tag 'application.css', :media => 'screen,projection' %>
-  <%= stylesheet_link_tag 'jquery.jscrollpane.css', :media => 'screen,projection' %>
-  
-  <%= javascript_include_tag :defaults %>
-  
-  <%= csrf_meta_tag %>
-
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
-  <meta property="og:title" content="Dr. Surendra Rao Shankapal" />
-  <meta property="og:type" content="blog" />
-  <meta property="og:url" content="<%= Settings.site_url %>" />
-  <meta property="og:image" content="<%= Settings.site_url + 'images/president.gif' %>" />
-  <meta property="og:site_name" content="Dr. Surendra Rao Shankapal&#039;s Blog" />
-  <meta property="fb:admins" content="730210922" />
-</head>
+	  <meta property="og:title" content="Dr. Surendra Rao Shankapal" />
+	  <meta property="og:type" content="blog" />
+	  <meta property="og:url" content="<%= Settings.site_url %>" />
+	  <meta property="og:image" content="<%= Settings.site_url + 'images/president.gif' %>" />
+	  <meta property="og:site_name" content="Dr. Surendra Rao Shankapal&#039;s Blog" />
+	  <meta property="fb:admins" content="730210922" />
+	</head>
   <body>
 
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    <%= javascript_tag :defer => 'defer' do -%>
+    	(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+    <% end -%>
 
     <div class="header">
       <div class="container">
