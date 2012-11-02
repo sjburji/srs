@@ -38,8 +38,7 @@ Srs::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => 'srspal.com' }
-  config.action_mailer.default_charset = 'utf-8'
-
+  
   # Enable threaded mode
   # config.threadsafe!
 
