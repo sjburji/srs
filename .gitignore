@@ -10,3 +10,4 @@ public/data/posts
 public/data/posts/*
 public/images/profiles
 public/images/profiles/*
+.rvmrc

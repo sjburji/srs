@@ -82,6 +82,12 @@
     </div>
 
     <div class="container" style="min-height: 490px;">
+      <br/>
+      <% flash.each do |key, msg| %>
+        <b><%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %></b>
+      <% end %>
+      <br/>
+
       <div class="yield_content">
         <%= yield %>        
       </div>

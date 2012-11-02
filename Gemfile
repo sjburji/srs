@@ -1,9 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails'
-gem "transitions", :require => ["transitions", "active_record/transitions"]
-gem 'jquery-rails', '>= 1.0.12'
+gem 'rails', '3.2.8'
+gem 'bcrypt-ruby', '3.0.1'
+gem 'jquery-rails'
 gem 'rake'
 gem 'mysql'
-gem 'rack', '1.2.1'
 gem "settingslogic"

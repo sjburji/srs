@@ -3,7 +3,7 @@ ActionMailer::Base.smtp_settings = {
   :port                 => 587,
   :domain               => "srspal.com",
   :user_name            => "mc@srspal.com",
-  :password             => "",
+  :password             => "msrsas60",
   :authentication 			=> :login,
   :enable_starttls_auto => false
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111030110327) do
+ActiveRecord::Schema.define(:version => 20121101161620) do
 
   create_table "cms", :force => true do |t|
     t.string   "section"
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(:version => 20111030110327) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "role_id"
-    t.string   "encrypted_password"
-    t.string   "salt"
     t.string   "image"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string   "password_digest"
   end
 
 end
