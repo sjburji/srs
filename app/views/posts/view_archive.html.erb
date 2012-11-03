@@ -3,14 +3,12 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Summary</th>
     <th>Posted on</th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
     <td><%= link_to post.title, post_path(post.id) %></td>
-    <td><%= post.summary %></td>
     <td><%= post.created_at.strftime('%B  %d %Y at %l:%M:%S %P') %></td>
   </tr>
 <% end %>

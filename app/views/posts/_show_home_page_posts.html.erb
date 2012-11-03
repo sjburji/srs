@@ -10,10 +10,6 @@
         </span>
       </h3>
 
-      <h6 class="post_summary">
-        <%= post.summary %>
-      </h6>
-
       <span class="post_content">
         <%= File.read(post.content).html_safe %>
       </span>

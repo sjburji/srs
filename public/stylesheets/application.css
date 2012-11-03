@@ -1,5 +1,5 @@
 body{
-	font-family: arial,verdana,helvetica,tahoma,Sans-serif;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .container{
@@ -20,8 +20,15 @@ body{
 
 .header{
     font: normal normal 12px 'Terminal Dosis Light', arial, serif;
-    background-color: rgb(221, 211, 158);
     color: #fff;
+}
+
+.header_span{
+    background-color: rgb(5, 27, 61);
+    min-height: 65px;
+    width: 100%;
+    position: absolute;
+    z-index: -2;
 }
 
 .yield_content{
@@ -30,7 +37,7 @@ body{
 
 .footer{
     background: url(/images/header-background.jpg);
-    padding:10px;
+    padding: 4px;
     color: #fff;
 }
 
@@ -70,6 +77,11 @@ body{
 
 .dashboard a:hover{
     color:#50506d;
+}
+
+.cms_content{
+    background-color: #EEE; 
+    padding: 2px;
 }
 
 .post{}
@@ -147,7 +159,7 @@ body{
 }
 
 .view_posts_body a:hover{
-    color: #ccc;
+    color: #000;
 }
 
 .recent_posts_header{
@@ -174,7 +186,7 @@ body{
 }
 
 .recent_posts_body a:hover{
-    color: #ccc;
+    color: #000;
 }
 
 .archive{
@@ -201,12 +213,12 @@ body{
 }
 
 .archive_posts_body a:hover{
-    color: #ccc;
+    color: #000;
 }
 
 .masthead {  
-	font-family: "BentonSans Regular", "Myriad Pro", Myriad, "Trebuchet MS", Trebuchet, Arial, sans-serif;
-	color: #000;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #fff;
 }
 
 .masthead a{
@@ -216,7 +228,7 @@ body{
 }
 
 .masthead a:hover{
-    color: #ccc;
+    color: #fff;
 }
 
 #logo {

@@ -4,7 +4,6 @@ class Post < ActiveRecord::Base
 
   validates :tab, :presence => true
   validates :title, :presence => true
-  validates :summary, :presence => true
   validates :content, :presence => true
 
   before_save :set_defaults
