@@ -1,6 +1,6 @@
 class PostMailer < ActionMailer::Base
 	default :from => "mc@srspal.com"
-  default :reply_to => "mc@srspal.com"
+  default :reply_to => "webmaster@srspal.com"
   default :template_path => "mailers"
 
   def post_creation_notification(post_id)
