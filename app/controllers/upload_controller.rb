@@ -7,9 +7,9 @@ class UploadController < ApplicationController
     		file_path = 'public/data/images'
     	end
       DataFile.save(params[:upload], file_path)
-      redirect_to upload_path
+      redirect_to(upload_path, :notice => 'File upload was successful')
     else
-      redirect_to root_path
+      redirect_to(root_path, :alert => 'File upload not allowed, Please sign-in and try again')
     end
   end
 
@@ -29,9 +29,9 @@ class UploadController < ApplicationController
       user.image = directory_path
       user.save(:validate => false)
 
-      redirect_to user_path(user)
+      redirect_to(user_path(user), :notice => 'Image upload was successful, Please wait for some time to refresh')
     else
-      redirect_to root_path
+      redirect_to(root_path, :alert => 'Image upload not allowed, Please sign-in and try again')
     end
   end
 
@@ -44,7 +44,7 @@ class UploadController < ApplicationController
         @file_path = "public/data/images"
       end
     else
-      redirect_to root_path
+      redirect_to(root_path, :alert => 'Upload not allowed, Please sign-in and try again')
     end
   end
 
@@ -52,7 +52,7 @@ class UploadController < ApplicationController
     if signed_in?
       @title = 'IMAGE UPLOAD'
     else
-      redirect_to root_path
+      redirect_to(root_path, :alert => 'Image upload not allowed, Please sign-in and try again')
     end
   end
 end

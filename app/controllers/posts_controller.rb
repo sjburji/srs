@@ -66,7 +66,7 @@ class PostsController < ApplicationController
     end
   end
 
-# PUT /posts/1
+	# PUT /posts/1
   # PUT /posts/1.xml
   def update
     if signed_in? && author_signed_in?
@@ -90,6 +90,9 @@ class PostsController < ApplicationController
     if signed_in? && author_signed_in?
       @post = Post.find(params[:id])
       @post.destroy
+      flash[:notice] = 'Post was deleted.'
+    else
+    	flash[:alert] = 'Post cannot be deleted, You do not have permissions ...!'
     end
 
     respond_to do |format|
@@ -118,7 +121,7 @@ class PostsController < ApplicationController
     unless params[:tab_id].nil?
       if Tab.find_by_name('ALL').id != params[:tab_id].to_i
         @posts = Post.find_all_by_tab_id(params[:tab_id].to_i,
-          :order => 'CREATED_AT DESC')
+          :order => 'CREATED_AT DESC').first(10)
       end
     end
 
@@ -139,10 +142,10 @@ class PostsController < ApplicationController
   def view_archive
     archive_id = params[:archive_id].to_s
     start_date = '01 ' + archive_id
-    expiry_date = '31 ' + archive_id
+    expiry_date = start_date.to_date.end_of_month
 
     @posts = Post.find(:all, :conditions => ['CREATED_AT >= ? AND CREATED_AT <= ?',
-        start_date.to_date, expiry_date.to_date])
+      start_date.to_date, expiry_date.to_date]).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html

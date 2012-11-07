@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         format.html
       end
     else
-      redirect_to root_path
+      redirect_to(root_path, :alert => 'User details cannot be shown, You do not have permissions ...!')
     end
   end
 
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         format.html { redirect_to(root_url, :notice => "User #{@user.name} successfully Signed up ...!") }
       else
         @title = "Sign up"
-        flash[:error] = "Signup error!"
+        flash[:alert] = "Signup had some errors ...!"
         format.html { render :new }
       end
     end
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
       @user.destroy
 
       respond_to do |format|
-        format.html { redirect_to(users_url) }
+        format.html { redirect_to(users_url, :notice => 'User was successfully deleted.') }
       end
     else
       redirect_to root_path
