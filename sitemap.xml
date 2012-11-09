@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+  <url>
+    <loc>http://srspal.com/</loc>
+  </url>
+  <url>
+    <loc>http://srspal.com/about</loc>
+  </url>
+  <url>
+    <loc>http://srspal.com/contact</loc>
+  </url>
+  <url>
+    <loc>http://srspal.com/signup</loc>
+  </url>
+  <url>
+    <loc>http://srspal.com/signin</loc>
+  </url>
+  <url>
+    <loc>http://srspal.com/privacy</loc>
+  </url>
+  <url>
+    <loc>http://srspal.com/password_resets/new</loc>
+  </url>
+</urlset>
