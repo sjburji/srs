@@ -1,4 +1,4 @@
-<h1>Listing comments</h1>
+<h3>Listing comments</h3>
 
 <table>
   <tr>
@@ -13,16 +13,18 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.content %></td>
-    <td><%= comment.post_id %></td>
-    <td><%= comment.user_id %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= button_to "Delete", { :action => "destroy", :id => comment.id },
-          :confirm => "Are you sure?", :method => :delete %></td>
+    <td><%= link_to comment.post.title, comment.post %></td>
+    <td><%= comment.user.name %></td>
+    <% if signed_in? && author_signed_in? %>
+      <td><%= link_to 'Show', comment %></td>
+      <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+      <td><%= button_to "Delete", { :action => "destroy", :id => comment.id },
+            :confirm => "Are you sure?", :method => :delete %></td>
+    <% end -%>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to 'New Comment', new_comment_path if signed_in? && author_signed_in? %>

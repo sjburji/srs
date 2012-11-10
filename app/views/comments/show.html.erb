@@ -5,14 +5,15 @@
 
 <p>
   <b>Post:</b>
-  <%= @comment.post_id %>
+  <%= @comment.post.title %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @comment.user_id %>
+  <%= @comment.user.name %>
 </p>
 
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Edit', edit_comment_path(@comment) if signed_in? && 
+	@comment.user_id.to_i == current_user.id %> | 
 <%= link_to 'Back', comments_path %>

@@ -9,44 +9,29 @@
     </span>
 
   <div style="float:left; width:92%; padding-left: 10px;">
-    <% if comment.user.role.id == Role::AUTHOR && comment.parent_id != nil %>
-      <span style="float:left;">
-        <b><%= comment.user.name %> replied</b>
+    <span style="float:right;">
+      <%= comment.created_at.strftime('%b %d %Y at %l:%M:%S %P') %>
+    </span>
+    <br/>
+
+    <span style="float:left;">
+      <b><%= comment.user.name %><%= comment.parent_id.nil? ? " said " : " replied " %></b>
+    </span>
+    <br/>
+
+    <span style="float:left;">
+      <%= comment.content %>
+    </span>
+    <br/>
+
+    <% if signed_in? and author_signed_in? and comment.user.role.id == Role::SUBSCRIBER and !comment.parent_id.nil? %>
+      <span id="reply_comments_link_div" style="float:right;">
+        <%= link_to 'Reply', '', :post_id => comment.post_id, :parent_id => comment.id %>
       </span>
 
-      <span style="float:right;">
-        <%= comment.created_at.strftime('%b %d %Y at %l:%M:%S %P') %>
-      </span>
-      <br/>
-
-      <span style="float:left;">
-        <%= comment.content %>
-        <br/>
-      </span>
-    <% else %>
-      <span style="float:left;">
-        <b><%= comment.user.name %> said</b>
-      </span>
-
-      <span style="float:right;">
-        <%= comment.created_at.strftime('%b %d %Y at %l:%M:%S %P') %>
-      </span>
-      <br/>
-
-      <span style="float:left;">
-        <%= comment.content %>
-        <br/>
-      </span>
-
-      <% if signed_in? and author_signed_in? and comment.user.role.id == Role::SUBSCRIBER %>
-        <span id="reply_comments_link_div" style="float:right;">
-          <%= link_to 'Reply', '', :post_id => comment.post_id, :parent_id => comment.id %>
-        </span>
-
-        <br/><br/>
-        <span id='<%= "reply_comments_div_#{comment.id}" %>'></span>
-      <% end -%>
-    <% end -%>    
+      <br/><br/>
+      <span id='<%= "reply_comments_div_#{comment.id}" %>'></span>
+    <% end -%>
   </div>
   <hr/>
 
