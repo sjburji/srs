@@ -2,14 +2,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    if signed_in? && author_signed_in?
-      @posts = Post.find(:all, :order => 'CREATED_AT DESC')
+    @posts = Post.find(:all, :order => 'CREATED_AT DESC')
 
-      respond_to do |format|
-        format.html
-      end
-    else
-      redirect_to root_path
+    respond_to do |format|
+      format.html
     end
   end
 
